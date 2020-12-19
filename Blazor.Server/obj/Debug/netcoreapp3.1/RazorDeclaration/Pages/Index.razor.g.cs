@@ -107,6 +107,13 @@ using Blazor.Server.Data;
         Name = result;
     }
 
+    // to make this method exposed to javascript
+    [JSInvokable] 
+    public static string Greet(string name)
+    {
+        return "Hello " + name;
+    }
+
 
 #line default
 #line hidden
