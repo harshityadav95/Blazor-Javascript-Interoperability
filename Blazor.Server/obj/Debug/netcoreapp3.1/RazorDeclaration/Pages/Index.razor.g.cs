@@ -83,6 +83,18 @@ using Blazor.Server.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 10 "C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\Pages\Index.razor"
+ 
+    public async Task TriggerAlert()
+    {
+        await JSRuntime.InvokeVoidAsync("myApp.triggerAlert","");
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JSRuntime { get; set; }
     }
 }
 #pragma warning restore 1591
