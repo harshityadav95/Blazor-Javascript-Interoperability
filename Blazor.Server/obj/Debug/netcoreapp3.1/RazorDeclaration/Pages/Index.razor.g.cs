@@ -91,7 +91,7 @@ using Blazor.Server.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 17 "C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\Pages\Index.razor"
+#line 18 "C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\Pages\Index.razor"
  
     public string Name { get; set; } = "World";
     public async Task TriggerAlert()
@@ -99,6 +99,14 @@ using Blazor.Server.Data;
         var forecast = await WeatherService.GetForecastAsync(DateTime.Now);
         await JSRuntime.InvokeVoidAsync("myApp.triggerAlert",forecast[0]);
     }
+
+
+    public async Task ShowPrompt()
+    {
+        var result = await JSRuntime.InvokeAsync<string>("myApp.showprompt", "");
+        Name = result;
+    }
+
 
 #line default
 #line hidden

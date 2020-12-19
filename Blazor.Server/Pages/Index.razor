@@ -8,10 +8,11 @@
 <!--Dependency Injection which is already started with startup.cs-->
 @inject WeatherForecastService WeatherService
 
-<h1>Hello, world!</h1>
+<h1>@Name</h1>
 
 Welcome to your new app.
 <button @onclick="TriggerAlert">Trigger Alert</button>
+<button @onclick="ShowPrompt">Trigger Alert</button>
 
 @code
 {
@@ -21,4 +22,12 @@ Welcome to your new app.
         var forecast = await WeatherService.GetForecastAsync(DateTime.Now);
         await JSRuntime.InvokeVoidAsync("myApp.triggerAlert",forecast[0]);
     }
+
+
+    public async Task ShowPrompt()
+    {
+        var result = await JSRuntime.InvokeAsync<string>("myApp.showprompt", "");
+        Name = result;
+    }
+
 }

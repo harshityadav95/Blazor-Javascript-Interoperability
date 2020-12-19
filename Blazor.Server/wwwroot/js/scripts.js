@@ -4,7 +4,8 @@
 myApp.triggerAlert =  (forecast) => {
 
     alert("forecast temp:" + forecast.temperatureC);
-
-
+}
+myApp.showprompt = () => {
+    return prompt("what is your name ?");
 
 }
