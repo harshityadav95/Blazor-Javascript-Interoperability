@@ -86,9 +86,10 @@ using Blazor.Server.Shared;
 #nullable restore
 #line 10 "C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\Pages\Index.razor"
  
+    public string Name { get; set; } = "World";
     public async Task TriggerAlert()
     {
-        await JSRuntime.InvokeVoidAsync("myApp.triggerAlert","");
+        await JSRuntime.InvokeVoidAsync("myApp.triggerAlert",Name);
     }
 
 #line default

@@ -8,8 +8,9 @@ Welcome to your new app.
 
 @code
 {
+    public string Name { get; set; } = "World";
     public async Task TriggerAlert()
     {
-        await JSRuntime.InvokeVoidAsync("myApp.triggerAlert","");
+        await JSRuntime.InvokeVoidAsync("myApp.triggerAlert",Name);
     }
 }
