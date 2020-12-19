@@ -75,6 +75,13 @@ using Blazor.Server.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\Pages\Index.razor"
+using Blazor.Server.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -84,17 +91,19 @@ using Blazor.Server.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 10 "C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\Pages\Index.razor"
+#line 17 "C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\Pages\Index.razor"
  
     public string Name { get; set; } = "World";
     public async Task TriggerAlert()
     {
-        await JSRuntime.InvokeVoidAsync("myApp.triggerAlert",Name);
+        var forecast = await WeatherService.GetForecastAsync(DateTime.Now);
+        await JSRuntime.InvokeVoidAsync("myApp.triggerAlert",forecast[0]);
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private WeatherForecastService WeatherService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JSRuntime { get; set; }
     }
 }

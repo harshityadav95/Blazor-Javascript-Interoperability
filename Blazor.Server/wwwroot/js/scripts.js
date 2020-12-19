@@ -1,9 +1,9 @@
 ﻿var myApp= myApp || {};
 // to initialize it to empty object 
 
-myApp.triggerAlert =  (message) => {
+myApp.triggerAlert =  (forecast) => {
 
-    alert(message);
+    alert("forecast temp:" + forecast.temperatureC);
 
 
 
