@@ -9,3 +9,6 @@ myApp.showprompt = () => {
     return prompt("what is your name ?");
 
 }
+myApp.setName = (name) => {
+    document.getElementById("myName").innerText = name;
+}

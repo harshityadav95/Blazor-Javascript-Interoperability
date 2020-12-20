@@ -8,15 +8,37 @@
 <!--Dependency Injection which is already started with startup.cs-->
 @inject WeatherForecastService WeatherService
 
-<h1>@Name</h1>
+
+<!--dependency injection for using the local storage api-->
+@inject LocalStorageService LocalStorage
+
+<h1>Hello ,<span id="myName">@Name</span></h1>
 
 Welcome to your new app.
 <button @onclick="TriggerAlert">Trigger Alert</button>
 <button @onclick="ShowPrompt">Trigger Alert</button>
-
+ 
 @code
 {
     public string Name { get; set; } = "World";
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        //on first render this will be set to True 
+        //on subsequent render this will be set to False
+        if (firstRender)
+        {
+            var savedValue = await LocalStorage.GetItemAsync("name");
+            if (!string.IsNullOrEmpty(savedValue))
+            {
+                Name = savedValue;
+                await JSRuntime.InvokeVoidAsync("myApp.setName", Name);
+            }
+
+        }
+
+    }
+
+
     public async Task TriggerAlert()
     {
         var forecast = await WeatherService.GetForecastAsync(DateTime.Now);
@@ -26,12 +48,17 @@ Welcome to your new app.
 
     public async Task ShowPrompt()
     {
-        var result = await JSRuntime.InvokeAsync<string>("myApp.showprompt", "");
-        Name = result;
+        var result = await JSRuntime.InvokeAsync<string>("myApp.showprompt", "Your name....");
+        if (!string.IsNullOrEmpty(result))
+        {
+            Name = result;
+            await LocalStorage.SetItemAsync("name", result);
+        }
+        
     }
 
-    // to make this method exposed to javascript
-    [JSInvokable] 
+    // to make this method exposed to javascript 
+    [JSInvokable]
     public static string Greet(string name)
     {
         return "Hello " + name;

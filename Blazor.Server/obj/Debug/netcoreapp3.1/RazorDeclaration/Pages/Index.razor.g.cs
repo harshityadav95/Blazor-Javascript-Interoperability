@@ -91,9 +91,27 @@ using Blazor.Server.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 18 "C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\Pages\Index.razor"
+#line 22 "C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\Pages\Index.razor"
  
     public string Name { get; set; } = "World";
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        //on first render this will be set to True 
+        //on subsequent render this will be set to False
+        if (firstRender)
+        {
+            var savedValue = await LocalStorage.GetItemAsync("name");
+            if (!string.IsNullOrEmpty(savedValue))
+            {
+                Name = savedValue;
+                await JSRuntime.InvokeVoidAsync("myApp.setName", Name);
+            }
+
+        }
+
+    }
+
+
     public async Task TriggerAlert()
     {
         var forecast = await WeatherService.GetForecastAsync(DateTime.Now);
@@ -103,12 +121,17 @@ using Blazor.Server.Data;
 
     public async Task ShowPrompt()
     {
-        var result = await JSRuntime.InvokeAsync<string>("myApp.showprompt", "");
-        Name = result;
+        var result = await JSRuntime.InvokeAsync<string>("myApp.showprompt", "Your name....");
+        if (!string.IsNullOrEmpty(result))
+        {
+            Name = result;
+            await LocalStorage.SetItemAsync("name", result);
+        }
+        
     }
 
-    // to make this method exposed to javascript
-    [JSInvokable] 
+    // to make this method exposed to javascript 
+    [JSInvokable]
     public static string Greet(string name)
     {
         return "Hello " + name;
@@ -118,6 +141,7 @@ using Blazor.Server.Data;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private LocalStorageService LocalStorage { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private WeatherForecastService WeatherService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JSRuntime { get; set; }
     }

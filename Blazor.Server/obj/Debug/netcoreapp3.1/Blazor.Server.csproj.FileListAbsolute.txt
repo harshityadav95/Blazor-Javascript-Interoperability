@@ -8,7 +8,6 @@ C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\bin\Debug\netcorea
 C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\bin\Debug\netcoreapp3.1\Blazor.Server.pdb
 C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\bin\Debug\netcoreapp3.1\Blazor.Server.Views.dll
 C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\bin\Debug\netcoreapp3.1\Blazor.Server.Views.pdb
-C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\obj\Debug\netcoreapp3.1\Blazor.Server.csprojAssemblyReference.cache
 C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\obj\Debug\netcoreapp3.1\Blazor.Server.AssemblyInfoInputs.cache
 C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\obj\Debug\netcoreapp3.1\Blazor.Server.AssemblyInfo.cs
 C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\obj\Debug\netcoreapp3.1\Blazor.Server.csproj.CoreCompileInputs.cache
@@ -49,3 +48,4 @@ C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\obj\Debug\netcorea
 C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\obj\Debug\netcoreapp3.1\Blazor.Server.pdb
 C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\obj\Debug\netcoreapp3.1\Blazor.Server.genruntimeconfig.cache
 C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\obj\Debug\netcoreapp3.1\Blazor.Server.csproj.CopyComplete
+C:\Users\harsh\Documents\GitHub\BlazorJsInterop\Blazor.Server\obj\Debug\netcoreapp3.1\Blazor.Server.csprojAssemblyReference.cache
